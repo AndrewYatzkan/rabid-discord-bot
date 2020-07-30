@@ -1,23 +1,11 @@
-//////////////////////////////////////////////////////////////////////////////////
-// load express and get something running on the glitch port to make glitch happy
-var express = require('express');
-var app = express();
-var listener = app.listen(process.env.PORT, function() {
-    console.log('Your app is listening on port ' + listener.address().port);
-});
-app.use(express.static('public'));
-app.get('/', function(request, response) {
-    response.sendFile(__dirname + 'index.html');
-});
-//////////////////////////////////////////////////////////////////////////////////
-
 // includes and data imports
 const fs = require('fs');
+require('dotenv').config();
 const Discord = require('discord.js');
 const { prefix, consoleLog } = require('./config.json');
-const discordToken = process.env.TOKEN
+const discordToken = process.env.DISCORD_TOKEN
 // uncomment to verify token usage
-// console.log('NEW: Using token:' + token);
+console.log('NEW: Using token:' + discordToken);
 
 
 const client = new Discord.Client();
